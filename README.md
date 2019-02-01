@@ -10,13 +10,14 @@ Benchmarking workflow for data science algorithms
 
 ### Benchmarking steps
 
-2) Release a version of your software - repeat subsequent steps for each new version
-4) Create a docker image for installing your software on a linux distribution with the bare essential dependencies and running the benchmarks
+1) Release a version of your software - repeat subsequent steps for each new version
+2) Create a docker image for installing your software on a linux distribution with the bare essential dependencies and running the benchmarks
   - Give it a name that is related to your software version and make sure the benchmark script is identical
   - OR have an [automatic build](https://docs.docker.com/docker-hub/builds/) from GitHub set up
-5) Push an image to Docker Hub and write an appropriate description
-6) Pull this image and run on your various systems
-6) Collect the performance stats from these machines and compare these with previous versions of the software
+3) Push an image to Docker Hub and write an appropriate description
+  - You may want a separate image for each machine you want to benchmark on, with the benchmarking script configured differently
+4) Pull this image and run on your various systems/machines
+5) Collect the performance stats from these machines and compare these with previous versions of the software
   - Perhaps have some kind of graph/chart that you update each time
 
 Benchmarking infrastructure/ tool
