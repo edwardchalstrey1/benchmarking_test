@@ -19,6 +19,7 @@ Benchmarking workflow for data science algorithms
 4) Pull this image and run on your various systems/machines
 5) Collect the performance stats from these machines and compare these with previous versions of the software
     - Perhaps have some kind of graph/chart that you update each time
+    - We could save the benchmark results data in JSON files, similar to however [airspeed velocity](https://asv.readthedocs.io/en/stable/using.html) does it
 
 Benchmarking infrastructure/ tool
 =======
