@@ -11,7 +11,7 @@ Benchmarking workflow for data science algorithms
 ### Benchmarking steps
 
 1) Release a version of your software - repeat subsequent steps for each new version
-2) Create a docker image for installing your software on a linux distribution with the bare essential dependencies and running the benchmarks
+2) Create a docker image for installing your software on a linux distribution with the bare essential dependencies and running the benchmarks (an alternative to Docker is Singularity and you can create either using [HPC container maker](https://github.com/NVIDIA/hpc-container-maker))
     - Give it a name and a tag related to your software version and tag latest: ```docker build -t whenry/fedora-jboss:latest -t whenry/fedora-jboss:v2.1 .```
     - Make sure the benchmark script is identical. This should be run at the end of the Dockerfile e.g. ```CMD python benchmarks.py``` but you may also want to include arguments, see step 4 below*
     - It is however possible to change the benchmark script at run: ```docker run -v path/to/replacement/benchmark.py:path/within/container/benchmarks.py -t edwardchalstrey/benchmark_test:latest python benchmarks.py``` (in this case you wouldn't need to add ```python benchmarks.py``` if that was what was already specified by CMD in the Dockerfile)
