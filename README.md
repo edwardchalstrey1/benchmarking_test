@@ -29,4 +29,14 @@ Benchmarking infrastructure/ tool
 
 - [Incorporate benchmarks into continuous integration such as Jenkins](https://www.researchgate.net/publication/274738961_Including_Performance_Benchmarks_into_Continuous_Integration_to_Enable_DevOps)
  - There is a tool called [airspeed velocity](https://asv.readthedocs.io/en/stable/index.html) for benchmarking Python packages over their lifetime that generates an interactive web frontend for results e.g. for [numpy](https://pv.github.io/numpy-bench/) - perhaps this interface style is useful as inspiration?
- - We want a tool where you can submit a new algorithm to “compete” at a (data science) task that older algorithms have been benchmarked for. This could be a newer version of the same thing that’s supposed to be more efficient and/or accurate, or it could be a competing approach
+ - We want a tool where you can submit a new algorithm to “compete” at a (data science) task that older algorithms have been benchmarked for. This could be a newer version of the same thing that’s supposed to be more efficient and/or accurate, or it could be a competing approach. Something similar to this has been done at Stanford called [DAWNBench](https://dawn.cs.stanford.edu/benchmark/)
+ 
+ ### Challenges
+ 
+ 1. **Customisability and scope** - What is the scope of the benchmarking infrastructure in terms of the algorithms it tests
+ 2. **Metrics** - What does it actually measure? Consider performance (speed), correctness and convergence across different computing environments (how consistent are the metrics). What about cost and things like that? Look at the metrics used by [DAWNBench](https://dawn.cs.stanford.edu/benchmark/)
+ 3. Does the workflow/ infrastructure we develop hold up **at scale** and does it only alter native performance of the algorithms in a negligible capacity
+ 4. **Validation** - how many times is a benchmark run? Do we report median results or something like that? What about variance?
+ 5. **Presentation** - Are we going to build an interface and how do we show the results?
+ 
+ 
