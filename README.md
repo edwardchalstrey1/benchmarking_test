@@ -12,7 +12,8 @@ Benchmarking workflow for data science algorithms
 
 1) Release a version of your software - repeat subsequent steps for each new version
 2) Create a docker image for installing your software on a linux distribution with the bare essential dependencies and running the benchmarks
-    - Give it a name that is related to your software version and make sure the benchmark script is identical
+    - Give it a name and a tag related to your software version and tag latest: ```docker build -t whenry/fedora-jboss:latest -t whenry/fedora-jboss:v2.1 .```
+    - Make sure the benchmark script is identical
     - OR have an [automatic build](https://docs.docker.com/docker-hub/builds/) from GitHub set up
 3) Push an image to Docker Hub and write an appropriate description
     - You may want a separate image for each machine you want to benchmark on, with the benchmarking script configured differently
