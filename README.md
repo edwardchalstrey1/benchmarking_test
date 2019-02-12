@@ -13,11 +13,12 @@ Benchmarking workflow for data science algorithms
 1) Release a version of your software - repeat subsequent steps for each new version
 2) Create a docker image for installing your software on a linux distribution with the bare essential dependencies and running the benchmarks
     - Give it a name and a tag related to your software version and tag latest: ```docker build -t whenry/fedora-jboss:latest -t whenry/fedora-jboss:v2.1 .```
-    - Make sure the benchmark script is identical
+    - Make sure the benchmark script is identical. This should be run at the end of the Dockerfile e.g. ```CMD python benchmarks.py``` but you may also want to include arguments, see step 4 below*
+    - It is however possible to change the benchmark script at run: ```docker run -v path/to/replacement/benchmark.py:path/within/container/benchmarks.py -t edwardchalstrey/benchmark_test:latest python benchmarks.py``` (in this case you wouldn't need to add ```python benchmarks.py``` if that was what was already specified by CMD in the Dockerfile)
     - OR have an [automatic build](https://docs.docker.com/docker-hub/builds/) from GitHub set up
 3) Push an image to Docker Hub and write an appropriate description
     - You may want a separate image for each machine you want to benchmark on, with the benchmarking script configured differently
-4) Pull this image and run on your various systems/machines
+4) Pull this image and run on your various systems/machines with ```docker run``` (* you can change the arguments if you have specified some e.g. ```docker run -t edwardchalstrey/benchmark_test:latest python benchmarks.py x y z``` where x, y and z are input/benchmark configuration values)
 5) Collect the performance stats from these machines and compare these with previous versions of the software
     - Perhaps have some kind of graph/chart that you update each time
     - We could save the benchmark results data in JSON files, similar to however [airspeed velocity](https://asv.readthedocs.io/en/stable/using.html) does it
