@@ -19,6 +19,7 @@ Benchmarking workflow for data science algorithms
 3) Push an image to Docker Hub and write an appropriate description
     - You may want a separate image for each machine you want to benchmark on, with the benchmarking script configured differently
 4) Pull this image and run on your various systems/machines with ```docker run``` (* you can change the arguments if you have specified some e.g. ```docker run -t edwardchalstrey/benchmark_test:latest python benchmarks.py x y z``` where x, y and z are input/benchmark configuration values)
+    - The CMD at the end of the Dockerfile (or in command line as in 4 above) can use mpi e.g. ```mpirun -n 4 python script.py``` - in this case you'd need ```mpi4py``` installed
 5) Collect the performance stats from these machines and compare these with previous versions of the software
     - Perhaps have some kind of graph/chart that you update each time
     - We could save the benchmark results data in JSON files, similar to however [airspeed velocity](https://asv.readthedocs.io/en/stable/using.html) does it
