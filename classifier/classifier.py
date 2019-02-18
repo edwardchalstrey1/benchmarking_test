@@ -26,5 +26,5 @@ def results():
 
     performance = report['micro avg']['f1-score']
 
-    return({"Training time (s)": training_time, "Prediction time (s)": classifier_time,
-    "Performance (micro avg f1 score)": report['micro avg']['f1-score']})
+    return([metrics.classification_report(expected, predicted), {"Training time (s)": training_time, "Prediction time (s)": classifier_time,
+    "Performance (micro avg f1 score)": report['micro avg']['f1-score']}])
