@@ -10,7 +10,27 @@ def results():
 
     expected = digits.target[n_samples // 2:]
 
-    classifier = svm.SVC(gamma='scale')
+    C = 1.0  # SVM regularization parameter
+    models = [svm.SVC(kernel='linear', C=C),
+          svm.LinearSVC(C=C),
+          svm.SVC(kernel='rbf', gamma=0.7, C=C),
+          svm.SVC(kernel='poly', degree=3, C=C)]
+
+    ### Version 1.0 ###
+
+    # classifier = models[0]
+
+    ### Version 1.1 ###
+
+    classifier = models[1]
+
+    ### Version 1.2 ###
+
+    # classifier = models[2]
+
+    ### Version 1.3 ###
+
+    # classifier = models[3]
 
     start = time.time()
     classifier.fit(data[:n_samples // 2], digits.target[:n_samples // 2])
